@@ -1,0 +1,19 @@
+# Local PowerShell server logs & temp files
+*.log
+server_err.txt
+server_prod_err.txt
+*.tmp
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor folders
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
