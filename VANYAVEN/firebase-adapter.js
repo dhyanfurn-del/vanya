@@ -322,10 +322,20 @@
     return writeCount;
   }
 
+  /**
+   * Get the Firestore db instance (initializing if needed)
+   */
+  function getDb() {
+    if (!isInitialized) init();
+    return db;
+  }
+
   // Expose global interface
   window.VanyaFirebase = {
     isConfigured,
     init,
+    getDb,
+    get _db() { return db; },   // Direct Firestore instance access
     syncOrder,
     deleteOrder,
     subscribeOrders,

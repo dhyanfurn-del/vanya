@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -3402,6 +3402,9 @@ button, input, select, textarea {
       const code = String(rec['Vendor number']);
       if (this.isClaude) {
         await this.claudeDb.doc('vendors/' + code).set(rec);
+      } else if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        await window.VanyaFirebase.syncVendor(rec);
+        return;
       } else {
         let list = JSON.parse(localStorage.getItem('vanya_vendors') || '[]');
         const idx = list.findIndex(v => String(v['Vendor number']) === code);
@@ -3410,14 +3413,16 @@ button, input, select, textarea {
         localStorage.setItem('vanya_vendors', JSON.stringify(list));
         this.notify('vendors');
       }
-      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
-        window.VanyaFirebase.syncVendor(rec);
-      }
     }
 
     async updateVendor(code, updates) {
       if (this.isClaude) {
         await this.claudeDb.doc('vendors/' + code).update(updates);
+      } else if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        try {
+          await window.VanyaFirebase._db.collection('vendors').doc(code).set(updates, { merge: true });
+        } catch(e) { await window.VanyaFirebase.syncVendor({ 'Vendor number': code, ...updates }); }
+        return;
       } else {
         let list = JSON.parse(localStorage.getItem('vanya_vendors') || '[]');
         const idx = list.findIndex(v => String(v['Vendor number']) === code);
@@ -3425,9 +3430,6 @@ button, input, select, textarea {
           list[idx] = { ...list[idx], ...updates };
           localStorage.setItem('vanya_vendors', JSON.stringify(list));
           this.notify('vendors');
-          if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
-            window.VanyaFirebase.syncVendor(list[idx]);
-          }
         }
       }
     }
@@ -3436,6 +3438,9 @@ button, input, select, textarea {
       const no = String(order.orderNo);
       if (this.isClaude) {
         await this.claudeDb.doc('orders/' + no).set(order);
+      } else if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        await window.VanyaFirebase.syncOrder(order);
+        return;
       } else {
         let list = JSON.parse(localStorage.getItem('vanya_orders') || '[]');
         const idx = list.findIndex(o => String(o.orderNo) === no);
@@ -3444,15 +3449,17 @@ button, input, select, textarea {
         localStorage.setItem('vanya_orders', JSON.stringify(list));
         this.notify('orders');
       }
-      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
-        window.VanyaFirebase.syncOrder(order);
-      }
     }
 
     async updateOrder(orderNo, updates) {
       const no = String(orderNo);
       if (this.isClaude) {
         await this.claudeDb.doc('orders/' + no).update(updates);
+      } else if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        try {
+          await window.VanyaFirebase._db.collection('orders').doc(no).set(updates, { merge: true });
+        } catch(e) { await window.VanyaFirebase.syncOrder({ orderNo: no, ...updates }); }
+        return;
       } else {
         let list = JSON.parse(localStorage.getItem('vanya_orders') || '[]');
         const idx = list.findIndex(o => String(o.orderNo) === no);
@@ -3460,9 +3467,6 @@ button, input, select, textarea {
           list[idx] = { ...list[idx], ...updates };
           localStorage.setItem('vanya_orders', JSON.stringify(list));
           this.notify('orders');
-          if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
-            window.VanyaFirebase.syncOrder(list[idx]);
-          }
         }
       }
     }
@@ -3471,14 +3475,14 @@ button, input, select, textarea {
       const no = String(orderNo);
       if (this.isClaude) {
         await this.claudeDb.doc('responses/' + no).set(resp);
+      } else if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        await window.VanyaFirebase.syncResponse(no, resp);
+        return;
       } else {
         let map = JSON.parse(localStorage.getItem('vanya_responses') || '{}');
         map[no] = resp;
         localStorage.setItem('vanya_responses', JSON.stringify(map));
         this.notify('responses');
-      }
-      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
-        window.VanyaFirebase.syncResponse(no, resp);
       }
     }
 
@@ -3486,14 +3490,14 @@ button, input, select, textarea {
       const no = String(orderNo);
       if (this.isClaude) {
         await this.claudeDb.doc('responses/' + no).delete();
+      } else if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        await window.VanyaFirebase.deleteResponse(no);
+        return;
       } else {
         let map = JSON.parse(localStorage.getItem('vanya_responses') || '{}');
         delete map[no];
         localStorage.setItem('vanya_responses', JSON.stringify(map));
         this.notify('responses');
-      }
-      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
-        window.VanyaFirebase.deleteResponse(no);
       }
     }
 
@@ -3501,14 +3505,14 @@ button, input, select, textarea {
       const entry = { ts: new Date().toISOString(), actor, action, orderNo, detail };
       if (this.isClaude) {
         try { await this.claudeDb.collection('log').add(entry); } catch (e) {}
+      } else if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        window.VanyaFirebase.logAuditEvent(actor, action, orderNo, detail);
+        return;
       } else {
         let list = JSON.parse(localStorage.getItem('vanya_log') || '[]');
         list.push(entry);
         localStorage.setItem('vanya_log', JSON.stringify(list));
         this.notify('log');
-      }
-      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
-        window.VanyaFirebase.logAuditEvent(actor, action, orderNo, detail);
       }
     }
 
@@ -3624,15 +3628,24 @@ button, input, select, textarea {
           const snap = await this.claudeDb.collection('boms').get();
           return snap.docs.map(d => ({ ...d.data(), id: d.id }));
         } catch (e) { return []; }
-      } else {
-        return JSON.parse(localStorage.getItem('vanya_boms') || '[]');
+      } else if (window.VanyaFirebase && window.VanyaFirebase.isConfigured() && window.VanyaFirebase._db) {
+        try {
+          const snap = await window.VanyaFirebase._db.collection('boms').get();
+          return snap.docs.map(d => ({ ...d.data(), id: d.id }));
+        } catch (e) {
+          console.warn('[DB] getBOMs from Firestore failed, using localStorage:', e);
+        }
       }
+      return JSON.parse(localStorage.getItem('vanya_boms') || '[]');
     }
 
     async saveBOM(bom) {
       const id = String(bom.id);
       if (this.isClaude) {
         await this.claudeDb.doc('boms/' + id).set(bom);
+      } else if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        await window.VanyaFirebase.syncBOM(bom);
+        return;
       } else {
         let list = JSON.parse(localStorage.getItem('vanya_boms') || '[]');
         const idx = list.findIndex(b => String(b.id) === id);
@@ -3641,23 +3654,20 @@ button, input, select, textarea {
         localStorage.setItem('vanya_boms', JSON.stringify(list));
         this.notify('boms');
       }
-      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
-        window.VanyaFirebase.syncBOM(bom);
-      }
     }
 
     async deleteBOM(bomId) {
       const id = String(bomId);
       if (this.isClaude) {
         await this.claudeDb.doc('boms/' + id).delete();
+      } else if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        await window.VanyaFirebase.deleteBOM(id);
+        return;
       } else {
         let list = JSON.parse(localStorage.getItem('vanya_boms') || '[]');
         list = list.filter(b => String(b.id) !== id);
         localStorage.setItem('vanya_boms', JSON.stringify(list));
         this.notify('boms');
-      }
-      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
-        window.VanyaFirebase.deleteBOM(id);
       }
     }
 
@@ -3709,6 +3719,7 @@ button, input, select, textarea {
     notifyLocalSubscribers() {
       ['vendors', 'orders', 'responses', 'log', 'boms'].forEach(col => this.notify(col));
     }
+  }
   }
 
   const DB = new HybridDatabase();
