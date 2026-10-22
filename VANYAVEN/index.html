@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -2967,10 +2967,55 @@ button, input, select, textarea {
           const d = await this.claudeDb.doc('vendors/' + code).get();
           return d.exists ? d.data() : null;
         } catch (e) { return null; }
+      } else if (window.VanyaFirebase && window.VanyaFirebase.isConfigured() && window.VanyaFirebase._db) {
+        try {
+          const d = await window.VanyaFirebase._db.collection('vendors').doc(code).get();
+          return d.exists ? d.data() : null;
+        } catch (e) { return null; }
       } else {
         const list = JSON.parse(localStorage.getItem('vanya_vendors') || '[]');
         return list.find(v => String(v['Vendor number']).toUpperCase() === code.toUpperCase()) || null;
       }
+    }
+
+    async getVendors() {
+      if (this.isClaude) {
+        try {
+          const snap = await this.claudeDb.collection('vendors').get();
+          return snap.docs.map(d => ({ ...d.data(), 'Vendor number': d.data()['Vendor number'] || d.id }));
+        } catch (e) { return []; }
+      } else if (window.VanyaFirebase && window.VanyaFirebase.isConfigured() && window.VanyaFirebase._db) {
+        try {
+          const snap = await window.VanyaFirebase._db.collection('vendors').get();
+          return snap.docs.map(d => ({ ...d.data() }));
+        } catch (e) {
+          console.warn('[DB] getVendors from Firestore failed, using localStorage:', e);
+        }
+      }
+      return JSON.parse(localStorage.getItem('vanya_vendors') || '[]');
+    }
+
+    async getOrders(vendorFilter) {
+      if (this.isClaude) {
+        try {
+          let q = this.claudeDb.collection('orders');
+          if (vendorFilter) q = q.where('vendor', '==', vendorFilter);
+          const snap = await q.get();
+          return snap.docs.map(d => d.data());
+        } catch (e) { return []; }
+      } else if (window.VanyaFirebase && window.VanyaFirebase.isConfigured() && window.VanyaFirebase._db) {
+        try {
+          let q = window.VanyaFirebase._db.collection('orders');
+          if (vendorFilter) q = q.where('vendor', '==', vendorFilter);
+          const snap = await q.get();
+          return snap.docs.map(d => d.data());
+        } catch (e) {
+          console.warn('[DB] getOrders from Firestore failed, using localStorage:', e);
+        }
+      }
+      let list = JSON.parse(localStorage.getItem('vanya_orders') || '[]');
+      if (vendorFilter) list = list.filter(o => o.vendor === vendorFilter);
+      return list;
     }
 
     async saveVendor(rec) {
