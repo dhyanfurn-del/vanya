@@ -546,8 +546,8 @@ button, input, select, textarea {
   }
 }
 .login-editorial {
-  padding: 40px;
-  background: linear-gradient(135deg, var(--bg-card-subtle) 0%, var(--bg-card) 100%);
+  padding: 44px;
+  background: linear-gradient(145deg, #18281F 0%, #111B15 50%, #0A110D 100%);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   display: flex;
@@ -556,6 +556,7 @@ button, input, select, textarea {
   min-height: 480px;
   position: relative;
   overflow: hidden;
+  color: #FFFFFF;
 }
 .login-editorial::before {
   content: "";
@@ -564,7 +565,7 @@ button, input, select, textarea {
   right: -60px;
   width: 220px;
   height: 220px;
-  background: radial-gradient(circle, rgba(154, 102, 53, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(205, 179, 128, 0.15) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -573,8 +574,9 @@ button, input, select, textarea {
   align-items: center;
   gap: 6px;
   padding: 5px 12px;
-  background: rgba(154, 102, 53, 0.12);
-  color: var(--brand-accent);
+  background: rgba(205, 179, 128, 0.2);
+  color: #E2B679;
+  border: 1px solid rgba(205, 179, 128, 0.35);
   border-radius: var(--radius-full);
   font-size: 12px;
   font-weight: 700;
@@ -587,12 +589,12 @@ button, input, select, textarea {
   font-size: clamp(32px, 4vw, 42px);
   font-weight: 600;
   line-height: 1.15;
-  color: var(--brand-primary);
+  color: #FFFFFF;
   margin: 20px 0 14px;
 }
 .editorial-desc {
   font-size: 15px;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.65;
 }
 .editorial-stats {
@@ -601,17 +603,17 @@ button, input, select, textarea {
   gap: 16px;
   margin-top: 36px;
   padding-top: 24px;
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
 .editorial-stat-num {
   font-family: var(--font-serif);
   font-size: 26px;
   font-weight: 700;
-  color: var(--brand-primary);
+  color: #E2B679;
 }
 .editorial-stat-lbl {
   font-size: 11px;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -1073,32 +1075,33 @@ button, input, select, textarea {
    ======================================================== */
 .admin-tabs {
   display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 8px;
+  margin-bottom: 22px;
   border-bottom: 1px solid var(--border-light);
-  padding-bottom: 8px;
+  padding-bottom: 6px;
 }
 .admin-tab-btn {
-  padding: 10px 18px;
+  padding: 8px 16px;
   background: transparent;
-  border: none;
-  font-size: 15px;
-  font-weight: 700;
+  border: 1px solid transparent;
+  font-size: 13.5px;
+  font-weight: 600;
   color: var(--text-muted);
   cursor: pointer;
   border-radius: var(--radius-sm);
   transition: var(--transition);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
 }
 .admin-tab-btn:hover {
-  color: var(--brand-accent);
+  color: var(--brand-primary);
   background: var(--bg-card-subtle);
 }
 .admin-tab-btn.active {
-  color: #fff;
+  color: var(--text-inverse);
   background: var(--brand-primary);
+  border-color: var(--brand-primary);
 }
 
 /* VENDOR LIST TABLE / CARDS */
@@ -1140,53 +1143,38 @@ button, input, select, textarea {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
-.vendor-studio-cover {
-  position: relative;
-  height: 140px;
-  overflow: hidden;
+.vendor-studio-header {
+  padding: 14px 16px;
   background: var(--bg-card-subtle);
-}
-.vendor-studio-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-.vendor-studio-card:hover .vendor-studio-img {
-  transform: scale(1.05);
-}
-.vendor-studio-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(25,39,30,0.8) 100%);
+  border-bottom: 1px solid var(--border-light);
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  padding: 12px 14px;
+  align-items: center;
 }
 .vendor-studio-badge {
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 11px;
-  background: rgba(255,255,255,0.95);
-  color: #19271E;
+  background: var(--brand-primary);
+  color: #FFFFFF;
   padding: 3px 8px;
   border-radius: var(--radius-sm);
   letter-spacing: 0.03em;
 }
 [data-theme="dark"] .vendor-studio-badge {
-  background: rgba(24,28,26,0.95);
+  background: rgba(205, 179, 128, 0.2);
   color: #CDB380;
+  border: 1px solid rgba(205, 179, 128, 0.3);
 }
 .vendor-studio-craft {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  color: #FFFFFF;
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(4px);
-  padding: 2px 8px;
+  color: var(--brand-accent);
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  padding: 3px 8px;
   border-radius: var(--radius-sm);
-  max-width: 170px;
+  max-width: 180px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1568,6 +1556,96 @@ button, input, select, textarea {
   align-items: center;
 }
 
+/* BOM MINIMIZATION & COMPONENT IMAGES */
+.bom-product-card.is-collapsed {
+  margin-bottom: 14px;
+}
+.bom-product-card.is-collapsed .bom-product-header {
+  border-bottom: none;
+}
+.bom-collapsed-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 22px;
+  background: var(--bg-card-subtle);
+  border-top: 1px dashed var(--border-light);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.bom-collapsed-summary:hover {
+  background: rgba(154, 102, 53, 0.08);
+}
+.bom-mini-tags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.bom-mini-pill {
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-light);
+}
+.bom-mini-expand-hint {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.bom-part-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bom-part-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 1px solid var(--border-light);
+  flex-shrink: 0;
+  background: var(--bg-card-subtle);
+}
+.bom-thumb {
+  width: 76px;
+  height: 76px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-light);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+.bom-product-card:hover .bom-thumb {
+  transform: scale(1.02);
+}
+
+/* VENDOR ORDER CARD IMAGE LAYOUT */
+.vendor-order-layout {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+.vendor-order-thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 1px solid var(--border-light);
+  flex-shrink: 0;
+  background: var(--bg-card-subtle);
+}
+.vendor-order-content {
+  flex: 1;
+  min-width: 0;
+}
+
 /* ========================================================
    5. MODAL DIALOGS
    ======================================================== */
@@ -1858,8 +1936,16 @@ button, input, select, textarea {
           <form id="login-form" onsubmit="event.preventDefault(); window.actions.login();">
             <div class="form-group">
               <label class="form-label" for="code">Vendor Identification Code</label>
-              <input class="form-input" id="code" placeholder="e.g. VND-100234 or your code" autocomplete="username" spellcheck="false" required>
-              <div class="form-hint">Enter your alphanumeric vendor code or admin PIN.</div>
+              <input class="form-input" id="code" placeholder="e.g. VND-70291 or Admin PIN" autocomplete="username" spellcheck="false" required>
+              <div class="form-hint">Enter your assigned vendor code (e.g. VND-70291) or admin PIN.</div>
+            </div>
+
+            <div class="form-group">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <label class="form-label" for="login-password" style="margin-bottom:0">Password <span class="req">*</span></label>
+                <button type="button" class="btn btn-subtle" style="padding:2px 8px;font-size:11px" onclick="window.actions.togglePasswordVisibility('login-password')">Show / Hide</button>
+              </div>
+              <input class="form-input" id="login-password" type="password" placeholder="Enter your portal password" autocomplete="current-password" required>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block btn-lg" id="login-submit-btn">
@@ -1920,6 +2006,19 @@ button, input, select, textarea {
             <div class="form-group">
               <label class="form-label">Official Email Address <span class="req">*</span></label>
               <input class="form-input" type="email" data-reg="Email" placeholder="contact@enterprisename.com" required>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Create Portal Password <span class="req">*</span></label>
+                <input class="form-input" type="password" id="reg-password" data-reg="Password" placeholder="Minimum 6 characters" required>
+                <div class="form-hint">Used for partner login and saved in your vendor profile.</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Confirm Portal Password <span class="req">*</span></label>
+                <input class="form-input" type="password" id="reg-password-confirm" placeholder="Re-type password" required>
+                <div class="form-hint">Must match password created on left.</div>
+              </div>
             </div>
           </div>
 
@@ -2176,9 +2275,6 @@ button, input, select, textarea {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             <span>Export Excel</span>
           </button>
-          <button class="btn btn-secondary btn-sm" onclick="window.actions.openFirebaseSyncModal()" title="Firebase Cloud Database & Data Migration">
-            <span>🔥 Firebase Cloud</span>
-          </button>
           <button class="btn btn-secondary btn-sm" onclick="window.actions.logout()">
             <svg width="14" height="14"><use href="#icon-logout"/></svg>
             <span>Log Out</span>
@@ -2186,39 +2282,39 @@ button, input, select, textarea {
         </div>
       </div>
 
-      <!-- ADMIN METRICS (VISUAL ICON CARDS) -->
+      <!-- ADMIN METRICS (MINIMAL CARDS) -->
       <div class="stats-grid">
-        <div class="stat-card" style="display:flex;align-items:center;gap:16px;padding:16px 20px">
-          <div style="width:46px;height:46px;border-radius:var(--radius-sm);background:rgba(154,102,53,0.12);color:var(--brand-accent);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">🏭</div>
+        <div class="stat-card" style="display:flex;align-items:center;gap:14px;padding:14px 18px">
+          <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(154,102,53,0.08);color:var(--brand-accent);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🏭</div>
           <div>
-            <div class="stat-val" id="stat-admin-vendors">0</div>
+            <div class="stat-val" id="stat-admin-vendors" style="font-size:24px">0</div>
             <div class="stat-label" style="margin-bottom:0">Workshops</div>
           </div>
         </div>
-        <div class="stat-card stat-ongoing" style="display:flex;align-items:center;gap:16px;padding:16px 20px">
-          <div style="width:46px;height:46px;border-radius:var(--radius-sm);background:rgba(59,130,246,0.12);color:#2563EB;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">📦</div>
+        <div class="stat-card stat-ongoing" style="display:flex;align-items:center;gap:14px;padding:14px 18px">
+          <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(59,130,246,0.08);color:#2563EB;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📦</div>
           <div>
-            <div class="stat-val" id="stat-admin-active">0</div>
+            <div class="stat-val" id="stat-admin-active" style="font-size:24px">0</div>
             <div class="stat-label" style="margin-bottom:0">In Production</div>
           </div>
         </div>
-        <div class="stat-card stat-hold" style="display:flex;align-items:center;gap:16px;padding:16px 20px">
-          <div style="width:46px;height:46px;border-radius:var(--radius-sm);background:rgba(245,158,11,0.12);color:#D97706;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">⏳</div>
+        <div class="stat-card stat-hold" style="display:flex;align-items:center;gap:14px;padding:14px 18px">
+          <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(245,158,11,0.08);color:#D97706;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">⏳</div>
           <div>
-            <div class="stat-val" id="stat-admin-vdone">0</div>
+            <div class="stat-val" id="stat-admin-vdone" style="font-size:24px">0</div>
             <div class="stat-label" style="margin-bottom:0">Review Ready</div>
           </div>
         </div>
-        <div class="stat-card stat-done" style="display:flex;align-items:center;gap:16px;padding:16px 20px">
-          <div style="width:46px;height:46px;border-radius:var(--radius-sm);background:rgba(16,185,129,0.12);color:#059669;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">✅</div>
+        <div class="stat-card stat-done" style="display:flex;align-items:center;gap:14px;padding:14px 18px">
+          <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(16,185,129,0.08);color:#059669;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">✅</div>
           <div>
-            <div class="stat-val" id="stat-admin-closed">0</div>
+            <div class="stat-val" id="stat-admin-closed" style="font-size:24px">0</div>
             <div class="stat-label" style="margin-bottom:0">Settled</div>
           </div>
         </div>
       </div>
 
-      <!-- ADMIN TABS -->
+      <!-- ADMIN TABS (MINIMAL 3 TABS) -->
       <div class="admin-tabs">
         <button class="admin-tab-btn active" data-admin-tab="orders" onclick="window.actions.setAdminTab('orders')">
           <span>📦 Orders Pipeline</span>
@@ -2228,9 +2324,6 @@ button, input, select, textarea {
         </button>
         <button class="admin-tab-btn" data-admin-tab="vendors" onclick="window.actions.setAdminTab('vendors')">
           <span>🏭 Vendors Directory</span>
-        </button>
-        <button class="admin-tab-btn" data-admin-tab="audit" onclick="window.actions.setAdminTab('audit')">
-          <span>📋 Activity Log</span>
         </button>
       </div>
 
@@ -2269,26 +2362,6 @@ button, input, select, textarea {
       <div id="admin-tab-vendors-wrap" style="display:none">
         <div id="admin-vendors-list">
           <!-- Rendered dynamically -->
-        </div>
-      </div>
-
-      <!-- ADMIN TAB CONTENT: AUDIT LOG -->
-      <div id="admin-tab-audit-wrap" style="display:none">
-        <div class="card" style="padding:20px;overflow-x:auto">
-          <table class="dossier-table" id="admin-audit-table">
-            <thead>
-              <tr>
-                <th style="width:180px">Timestamp</th>
-                <th style="width:140px">Actor</th>
-                <th style="width:160px">Action</th>
-                <th style="width:120px">Order Ref</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody id="admin-audit-body">
-              <!-- Rendered dynamically -->
-            </tbody>
-          </table>
         </div>
       </div>
     </section>
@@ -2416,8 +2489,54 @@ button, input, select, textarea {
     <div class="modal-body" style="padding:0">
       <div id="dossier-modal-content" style="max-height:65vh;overflow-y:auto;padding:20px"></div>
     </div>
-    <div class="modal-footer">
+    <div class="modal-footer" style="display:flex;justify-content:space-between;align-items:center">
+      <button class="btn btn-secondary btn-sm" id="dossier-reset-pwd-btn" onclick="" style="color:var(--brand-primary);border-color:var(--brand-primary)">
+        🔑 Reset Vendor Password
+      </button>
       <button class="btn btn-secondary" onclick="window.actions.closeModal('modal-dossier')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Admin Reset Vendor Password Modal -->
+<div class="modal-overlay" id="modal-reset-password">
+  <div class="modal-dialog" style="max-width:480px">
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:20px">🔑</span>
+        <h3>Reset Vendor Login Password</h3>
+      </div>
+      <button class="modal-close-btn" onclick="window.actions.closeModal('modal-reset-password')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="alert-box error" id="reset-pwd-err" role="alert"></div>
+      
+      <div style="padding:12px 14px;background:var(--bg-card-subtle);border-radius:var(--radius-sm);border:1px solid var(--border-light);margin-bottom:16px">
+        <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px">Artisan Workshop Partner</div>
+        <div style="font-size:15px;font-weight:600;color:var(--text-main);margin-top:2px" id="reset-pwd-vendor-name">Artisan Workshop</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
+          <span style="font-size:12px;color:var(--text-muted)">Vendor Code:</span>
+          <span class="vendor-meta-tag" id="reset-pwd-vendor-code" style="font-size:12px">VND-XXXXXX</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <label class="form-label" for="reset-pwd-new" style="margin-bottom:0">New Portal Password <span class="req">*</span></label>
+          <button type="button" class="btn btn-subtle" style="padding:2px 8px;font-size:11px" onclick="window.actions.generateRandomPassword()">🎲 Auto-Generate</button>
+        </div>
+        <div style="position:relative">
+          <input class="form-input" id="reset-pwd-new" type="text" placeholder="Enter new password (min. 6 chars)" required style="font-family:var(--font-mono);font-size:14px;padding-right:85px">
+          <button type="button" class="btn btn-subtle" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);padding:3px 8px;font-size:11px" onclick="window.actions.togglePasswordVisibility('reset-pwd-new')">Show/Hide</button>
+        </div>
+        <div class="form-hint">Updating the password immediately resets the partner's login credential.</div>
+      </div>
+    </div>
+    <div class="modal-footer" style="display:flex;justify-content:flex-end;gap:10px">
+      <button class="btn btn-secondary" onclick="window.actions.closeModal('modal-reset-password')">Cancel</button>
+      <button class="btn btn-primary" onclick="window.actions.submitResetPassword()">
+        <span>Update Password</span>
+      </button>
     </div>
   </div>
 </div>
@@ -2522,16 +2641,7 @@ button, input, select, textarea {
           <input class="form-input" type="number" id="bp-lead" min="1" value="25" placeholder="e.g. 25">
         </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Product Image URL</label>
-        <input class="form-input" id="bp-image" placeholder="https://images.unsplash.com/...">
-        <div class="form-hint" style="margin-top:6px">Quick Presets: 
-          <a href="#" style="color:var(--brand-accent);margin-right:8px" onclick="event.preventDefault();document.getElementById('bp-image').value='https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=700&q=80'">[Oslo Chair]</a>
-          <a href="#" style="color:var(--brand-accent);margin-right:8px" onclick="event.preventDefault();document.getElementById('bp-image').value='https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?auto=format&fit=crop&w=700&q=80'">[Aro Table]</a>
-          <a href="#" style="color:var(--brand-accent);margin-right:8px" onclick="event.preventDefault();document.getElementById('bp-image').value='https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80'">[Kiln Lamp]</a>
-          <a href="#" style="color:var(--brand-accent)" onclick="event.preventDefault();document.getElementById('bp-image').value='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=80'">[Lund Sofa]</a>
-        </div>
-      </div>
+      <input type="hidden" id="bp-image" value="">
       <div class="form-group">
         <label class="form-label">Master Description & Build Philosophy</label>
         <textarea class="form-textarea" id="bp-desc" placeholder="Sustainable timber species, joinery standards, textile requirements..."></textarea>
@@ -2753,7 +2863,8 @@ button, input, select, textarea {
       ['Business type', 'text', 1, 'e.g. Woodworking - PLPB, Brass Casting'],
       ['Contact person', 'text', 1, 'Authorized executive name'],
       ['Contact number', 'tel', 1, 'Primary mobile / phone'],
-      ['Email', 'email', 1, 'Official procurement email']
+      ['Email', 'email', 1, 'Official procurement email'],
+      ['Password', 'text', 1, 'Portal access password']
     ]],
     ['Addresses', [
       ['Head office address', 'area', 1, 'Headquarters registered address'],
@@ -2790,6 +2901,26 @@ button, input, select, textarea {
       el.style.transition = 'all 0.25s ease';
       setTimeout(() => el.remove(), 260);
     }, 3200);
+  }
+
+  // 10-DIGIT PO NUMBER GENERATOR (Guaranteed 10 digits between 1000000000 and 9999999999)
+  function generate10DigitPONumber(existingOrders = []) {
+    const existingSet = new Set((existingOrders || []).map(o => String(o.orderNo)));
+    let po;
+    do {
+      po = String(Math.floor(1000000000 + Math.random() * 9000000000));
+    } while (existingSet.has(po));
+    return po;
+  }
+
+  // STRICTLY UNIQUE VENDOR NUMBER GENERATOR (Guaranteed no repeat VND-XXXXXX)
+  function generateUniqueVendorNumber(existingVendors = []) {
+    const existingCodes = new Set((existingVendors || []).map(v => String(v['Vendor number'] || '').trim().toUpperCase()));
+    let code;
+    do {
+      code = 'VND-' + Math.floor(100000 + Math.random() * 900000);
+    } while (existingCodes.has(code));
+    return code;
   }
 
   // ========================================================
@@ -2829,6 +2960,7 @@ button, input, select, textarea {
           'Contact person': 'Radhika Nair',
           'Contact number': '+91 98450 11928',
           'Email': 'radhika@heritageloom.in',
+          'Password': 'vanya123',
           'Head office address': '14, Handloom Park, Whitefield, Bengaluru 560066',
           'Head office contact': '+91 80 4129 8810',
           'Main factory address': '14, Handloom Park, Whitefield, Bengaluru 560066',
@@ -2853,6 +2985,7 @@ button, input, select, textarea {
           'Contact person': 'Suresh Patel',
           'Contact number': '+91 98251 77209',
           'Email': 'orders@kraftpack.co.in',
+          'Password': 'vanya123',
           'Head office address': 'GIDC Industrial Estate Phase 3, Vatva, Ahmedabad 382445',
           'Head office contact': '+91 79 2583 4910',
           'Main factory address': 'Plot 48, GIDC Industrial Estate Phase 3, Vatva, Ahmedabad 382445',
@@ -2879,7 +3012,7 @@ button, input, select, textarea {
           sku: 'VNY-CH-089',
           category: 'Seating & Lounges',
           leadDays: 25,
-          image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=700&q=80',
+          image: '',
           desc: 'Solid Burma Teak contoured frame with hand-loomed textured bouclé cushions and turned brass hardware ferrules.',
           parts: [
             {
@@ -2945,7 +3078,7 @@ button, input, select, textarea {
           sku: 'VNY-TB-042',
           category: 'Tables & Dining',
           leadDays: 30,
-          image: 'https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?auto=format&fit=crop&w=700&q=80',
+          image: '',
           desc: 'Continuous grain book-matched teak slab dining table with solid brass bracing and trestle undercarriage.',
           parts: [
             {
@@ -3000,7 +3133,7 @@ button, input, select, textarea {
           sku: 'VNY-LP-115',
           category: 'Lighting & Decor',
           leadDays: 18,
-          image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80',
+          image: '',
           desc: 'Artisanal fluted ceramic pedestal with turned solid brass neck collar and pure Belgian linen drum shade.',
           parts: [
             {
@@ -3060,6 +3193,7 @@ button, input, select, textarea {
             'Contact person': 'Vikram Mehra',
             'Contact number': '+91 98201 44820',
             'Email': 'vikram@artisanwoods.in',
+            'Password': 'vanya123',
             'Head office address': '42, Timber Market Yard, Kirti Nagar, New Delhi 110015',
             'Head office contact': '+91 11 2541 8900',
             'Main factory address': 'Plot 18, Phase 2, Manesar Industrial Estate, Gurugram 122051',
@@ -3084,6 +3218,7 @@ button, input, select, textarea {
             'Contact person': 'Ananya Sengupta',
             'Contact number': '+91 97188 29014',
             'Email': 'procure@aurametalworks.com',
+            'Password': 'vanya123',
             'Head office address': 'B-12, Okhla Industrial Area Phase 1, New Delhi 110020',
             'Head office contact': '+91 11 4160 5521',
             'Main factory address': 'B-12, Okhla Industrial Area Phase 1, New Delhi 110020',
@@ -3104,9 +3239,10 @@ button, input, select, textarea {
           ...extraVendors
         ];
 
+        // PO numbers are strictly 10-digit numbers
         const seedOrders = [
           {
-            orderNo: '1048291',
+            orderNo: '1000048291',
             vendor: 'VND-70291',
             item: 'Komorebi Teak Dining Chair Frame',
             qty: 40,
@@ -3119,7 +3255,7 @@ button, input, select, textarea {
             files: [{ name: 'Komorebi_Chair_RevC.pdf', link: 'https://drive.google.com/file/d/demo1', type: 'drive' }]
           },
           {
-            orderNo: '1048292',
+            orderNo: '1000048292',
             vendor: 'VND-70291',
             item: 'Solitude Walnut Credenza Sideboard',
             qty: 12,
@@ -3132,7 +3268,7 @@ button, input, select, textarea {
             files: []
           },
           {
-            orderNo: '1047118',
+            orderNo: '1000047118',
             vendor: 'VND-70291',
             item: 'Zenith Cane & Oak Armchair',
             qty: 25,
@@ -3146,7 +3282,7 @@ button, input, select, textarea {
             files: []
           },
           {
-            orderNo: '1049301',
+            orderNo: '1000049301',
             vendor: 'VND-81923',
             item: 'Bespoke Fluted Brass Handles (200mm)',
             qty: 150,
@@ -3161,8 +3297,8 @@ button, input, select, textarea {
         ];
 
         const seedResponses = {
-          '1048292': {
-            orderNo: '1048292',
+          '1000048292': {
+            orderNo: '1000048292',
             vendor: 'VND-70291',
             status: 'hold',
             reason: 'Awaiting brass inlay shipment arrival scheduled for next Tuesday.',
@@ -3171,9 +3307,9 @@ button, input, select, textarea {
         };
 
         const seedLogs = [
-          { ts: '2026-10-02T10:00:00.000Z', actor: 'Admin', action: 'Order created', orderNo: '1048291', detail: 'Komorebi Teak Dining Chair Frame x 40' },
-          { ts: '2026-10-04T11:20:00.000Z', actor: 'Admin', action: 'Order created', orderNo: '1049301', detail: 'Bespoke Fluted Brass Handles x 150' },
-          { ts: '2026-10-08T15:45:00.000Z', actor: 'Vendor VND-70291', action: 'Put on hold', orderNo: '1048292', detail: 'Awaiting brass inlay shipment arrival' }
+          { ts: '2026-10-02T10:00:00.000Z', actor: 'Admin', action: 'Order created', orderNo: '1000048291', detail: 'Komorebi Teak Dining Chair Frame x 40' },
+          { ts: '2026-10-04T11:20:00.000Z', actor: 'Admin', action: 'Order created', orderNo: '1000049301', detail: 'Bespoke Fluted Brass Handles x 150' },
+          { ts: '2026-10-08T15:45:00.000Z', actor: 'Vendor VND-70291', action: 'Put on hold', orderNo: '1000048292', detail: 'Awaiting brass inlay shipment arrival' }
         ];
 
         localStorage.setItem('vanya_vendors', JSON.stringify(seedVendors));
@@ -3192,9 +3328,46 @@ button, input, select, textarea {
             updatedVendors = true;
           }
         });
+        // Ensure all vendors have a Password
+        currentVendors.forEach(v => {
+          if (!v['Password']) {
+            v['Password'] = 'vanya123';
+            updatedVendors = true;
+          }
+        });
         if (updatedVendors) {
           localStorage.setItem('vanya_vendors', JSON.stringify(currentVendors));
         }
+
+        // Migrate orders to ensure strict 10-digit PO numbers
+        let currentOrders = JSON.parse(localStorage.getItem('vanya_orders') || '[]');
+        let currentResponses = JSON.parse(localStorage.getItem('vanya_responses') || '{}');
+        let currentLogs = JSON.parse(localStorage.getItem('vanya_log') || '[]');
+        let updatedOrders = false;
+
+        currentOrders.forEach(o => {
+          const oldNo = String(o.orderNo || '');
+          if (oldNo.length < 10) {
+            const newNo = ('1000000000' + oldNo).slice(-10);
+            o.orderNo = newNo;
+            updatedOrders = true;
+
+            if (currentResponses[oldNo]) {
+              currentResponses[newNo] = { ...currentResponses[oldNo], orderNo: newNo };
+              delete currentResponses[oldNo];
+            }
+            currentLogs.forEach(l => {
+              if (String(l.orderNo) === oldNo) l.orderNo = newNo;
+            });
+          }
+        });
+
+        if (updatedOrders) {
+          localStorage.setItem('vanya_orders', JSON.stringify(currentOrders));
+          localStorage.setItem('vanya_responses', JSON.stringify(currentResponses));
+          localStorage.setItem('vanya_log', JSON.stringify(currentLogs));
+        }
+
         if (!localStorage.getItem('vanya_boms')) {
           localStorage.setItem('vanya_boms', JSON.stringify(seedBOMs));
         }
@@ -3237,6 +3410,9 @@ button, input, select, textarea {
         localStorage.setItem('vanya_vendors', JSON.stringify(list));
         this.notify('vendors');
       }
+      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        window.VanyaFirebase.syncVendor(rec);
+      }
     }
 
     async updateVendor(code, updates) {
@@ -3249,6 +3425,9 @@ button, input, select, textarea {
           list[idx] = { ...list[idx], ...updates };
           localStorage.setItem('vanya_vendors', JSON.stringify(list));
           this.notify('vendors');
+          if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+            window.VanyaFirebase.syncVendor(list[idx]);
+          }
         }
       }
     }
@@ -3265,6 +3444,9 @@ button, input, select, textarea {
         localStorage.setItem('vanya_orders', JSON.stringify(list));
         this.notify('orders');
       }
+      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        window.VanyaFirebase.syncOrder(order);
+      }
     }
 
     async updateOrder(orderNo, updates) {
@@ -3278,6 +3460,9 @@ button, input, select, textarea {
           list[idx] = { ...list[idx], ...updates };
           localStorage.setItem('vanya_orders', JSON.stringify(list));
           this.notify('orders');
+          if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+            window.VanyaFirebase.syncOrder(list[idx]);
+          }
         }
       }
     }
@@ -3292,6 +3477,9 @@ button, input, select, textarea {
         localStorage.setItem('vanya_responses', JSON.stringify(map));
         this.notify('responses');
       }
+      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        window.VanyaFirebase.syncResponse(no, resp);
+      }
     }
 
     async deleteResponse(orderNo) {
@@ -3303,6 +3491,9 @@ button, input, select, textarea {
         delete map[no];
         localStorage.setItem('vanya_responses', JSON.stringify(map));
         this.notify('responses');
+      }
+      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        window.VanyaFirebase.deleteResponse(no);
       }
     }
 
@@ -3316,10 +3507,16 @@ button, input, select, textarea {
         localStorage.setItem('vanya_log', JSON.stringify(list));
         this.notify('log');
       }
+      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        window.VanyaFirebase.logAuditEvent(actor, action, orderNo, detail);
+      }
     }
 
     // REACTIVE SUBSCRIPTIONS
     subscribeVendors(cb) {
+      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        return window.VanyaFirebase.subscribeVendors(cb);
+      }
       if (this.isClaude) {
         return this.claudeDb.collection('vendors').onSnapshot(snap => {
           const docs = snap.docs.map(d => ({ ...d.data(), 'Vendor number': d.data()['Vendor number'] || d.id }));
@@ -3337,6 +3534,12 @@ button, input, select, textarea {
     }
 
     subscribeOrders(vendorFilter, cb) {
+      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        return window.VanyaFirebase.subscribeOrders(orders => {
+          const filtered = vendorFilter ? orders.filter(o => o.vendor === vendorFilter) : orders;
+          cb(filtered);
+        });
+      }
       if (this.isClaude) {
         let q = this.claudeDb.collection('orders');
         if (vendorFilter) q = q.where('vendor', '==', vendorFilter);
@@ -3357,6 +3560,19 @@ button, input, select, textarea {
     }
 
     subscribeResponses(vendorFilter, cb) {
+      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        return window.VanyaFirebase.subscribeResponses(map => {
+          if (vendorFilter) {
+            const filtered = {};
+            Object.keys(map).forEach(k => {
+              if (map[k].vendor === vendorFilter) filtered[k] = map[k];
+            });
+            cb(filtered);
+          } else {
+            cb(map);
+          }
+        });
+      }
       if (this.isClaude) {
         let q = this.claudeDb.collection('responses');
         if (vendorFilter) q = q.where('vendor', '==', vendorFilter);
@@ -3425,6 +3641,9 @@ button, input, select, textarea {
         localStorage.setItem('vanya_boms', JSON.stringify(list));
         this.notify('boms');
       }
+      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        window.VanyaFirebase.syncBOM(bom);
+      }
     }
 
     async deleteBOM(bomId) {
@@ -3436,6 +3655,9 @@ button, input, select, textarea {
         list = list.filter(b => String(b.id) !== id);
         localStorage.setItem('vanya_boms', JSON.stringify(list));
         this.notify('boms');
+      }
+      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        window.VanyaFirebase.deleteBOM(id);
       }
     }
 
@@ -3459,6 +3681,9 @@ button, input, select, textarea {
     }
 
     subscribeBOMs(cb) {
+      if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+        return window.VanyaFirebase.subscribeBOMs(cb);
+      }
       if (this.isClaude) {
         return this.claudeDb.collection('boms').onSnapshot(snap => {
           const docs = snap.docs.map(d => ({ ...d.data(), id: d.id }));
@@ -3611,6 +3836,7 @@ button, input, select, textarea {
     const errBox = $('login-err');
     errBox.textContent = '';
     const codeInput = $('code').value.trim().toUpperCase();
+    const pwdInput = $('login-password') ? $('login-password').value.trim() : '';
 
     if (!codeInput) {
       errBox.textContent = 'Please enter your Vendor Code or Admin PIN.';
@@ -3618,14 +3844,28 @@ button, input, select, textarea {
       return;
     }
 
+    if (!pwdInput) {
+      errBox.textContent = 'Please enter your account password.';
+      if ($('login-password')) $('login-password').focus();
+      return;
+    }
+
     // Check for Admin / Sub-Admin Login PIN
-    if (codeInput === '9884208336') {
-      STATE.user = { role: 'admin', id: '9884208336', name: 'Master Admin' };
+    if (codeInput.toLowerCase() === 'admin' || codeInput === '9884208336') {
+      if (pwdInput !== 'vanya123') {
+        errBox.textContent = 'Invalid administrator password. Please try again.';
+        return;
+      }
+      STATE.user = { role: 'admin', id: 'admin', name: 'Master Admin' };
       DB.logAction('Admin', 'Logged in', '', '');
       openAdminPortal();
       toast('Welcome, Master Admin', 'success');
       return;
     } else if (codeInput === '7426995291') {
+      if (pwdInput !== 'vanya123') {
+        errBox.textContent = 'Invalid administrator password. Please try again.';
+        return;
+      }
       STATE.user = { role: 'admin', id: '7426995291', name: 'Sub Admin', isSubAdmin: true };
       DB.logAction('SubAdmin', 'Logged in', '', '');
       openAdminPortal();
@@ -3638,6 +3878,19 @@ button, input, select, textarea {
     if (!vendor) {
       errBox.textContent = 'Vendor code not recognized. Please check your credentials or complete the registration form.';
       return;
+    }
+
+    // Verify Vendor Password
+    const expectedPassword = vendor['Password'] || 'vanya123';
+    if (pwdInput !== expectedPassword) {
+      errBox.textContent = `Incorrect password for ${codeInput}. If forgotten, contact your Vanya administrator.`;
+      return;
+    }
+
+    // Ensure password is saved in profile if it was not explicitly stored yet
+    if (!vendor['Password']) {
+      vendor['Password'] = expectedPassword;
+      await DB.updateVendor(codeInput, { 'Password': expectedPassword });
     }
 
     STATE.user = {
@@ -3657,6 +3910,7 @@ button, input, select, textarea {
     STATE.user = null;
     clearSubscriptions();
     $('code').value = '';
+    if ($('login-password')) $('login-password').value = '';
     showView('v-login');
     toast('Logged out successfully');
   }
@@ -3839,51 +4093,55 @@ button, input, select, textarea {
 
       return `
         <div class="card card-hover order-card status-${st}">
-          <div class="order-top">
-            <div>
-              <div class="order-no">PO #${n}</div>
-              <div class="order-date-tag">Issued on ${fmtDate(o.inputDate)} · ${fyFromDate(o.inputDate)}</div>
-            </div>
-            <span class="status-badge ${badgeClass}">${badgeLabel}</span>
-          </div>
-
-          <div class="order-item-title">
-            <span>${esc(o.item)}</span>
-            <span class="qty-pill">Qty: ${esc(o.qty)}</span>
-          </div>
-
-          ${o.spec ? `<div class="order-specs-box"><strong>Specifications:</strong>\n${esc(o.spec)}</div>` : ''}
-
-          <div class="order-meta-grid">
-            <div>
-              <div class="order-meta-item-lbl">Target Due Date</div>
-              <div class="order-meta-item-val">${fmtDate(o.dueDate)}</div>
-            </div>
-            <div>
-              <div class="order-meta-item-lbl">Order Value</div>
-              <div class="order-meta-item-val">${formatINR(o.value)}</div>
-            </div>
-            ${st === 'completed' ? `
-              <div>
-                <div class="order-meta-item-lbl">Completion Date</div>
-                <div class="order-meta-item-val">${fmtDate(o.dispDate)}</div>
+          <div class="vendor-order-layout">
+            <div class="vendor-order-content">
+              <div class="order-top">
+                <div>
+                  <div class="order-no">PO #${n}</div>
+                  <div class="order-date-tag">Issued on ${fmtDate(o.inputDate)} · ${fyFromDate(o.inputDate)}</div>
+                </div>
+                <span class="status-badge ${badgeClass}">${badgeLabel}</span>
               </div>
-              <div>
-                <div class="order-meta-item-lbl">Payment Status</div>
-                <div class="order-meta-item-val" style="color:var(--brand-leaf)">${esc(o.payment || 'Pending')}</div>
+
+              <div class="order-item-title">
+                <span>${esc(o.item)}</span>
+                <span class="qty-pill">Qty: ${esc(o.qty)}</span>
               </div>
-            ` : ''}
-          </div>
 
-          ${(resp && resp.reason) ? `
-            <div class="vendor-note-box">
-              <strong>${resp.status === 'hold' ? 'Hold Reason' : 'Note'}:</strong> ${esc(resp.reason)}
+              ${o.spec ? `<div class="order-specs-box"><strong>Specifications:</strong>\n${esc(o.spec)}</div>` : ''}
+
+              <div class="order-meta-grid">
+                <div>
+                  <div class="order-meta-item-lbl">Target Due Date</div>
+                  <div class="order-meta-item-val">${fmtDate(o.dueDate)}</div>
+                </div>
+                <div>
+                  <div class="order-meta-item-lbl">Order Value</div>
+                  <div class="order-meta-item-val">${formatINR(o.value)}</div>
+                </div>
+                ${st === 'completed' ? `
+                  <div>
+                    <div class="order-meta-item-lbl">Completion Date</div>
+                    <div class="order-meta-item-val">${fmtDate(o.dispDate)}</div>
+                  </div>
+                  <div>
+                    <div class="order-meta-item-lbl">Payment Status</div>
+                    <div class="order-meta-item-val" style="color:var(--brand-leaf)">${esc(o.payment || 'Pending')}</div>
+                  </div>
+                ` : ''}
+              </div>
+
+              ${(resp && resp.reason) ? `
+                <div class="vendor-note-box">
+                  <strong>${resp.status === 'hold' ? 'Hold Reason' : 'Note'}:</strong> ${esc(resp.reason)}
+                </div>
+              ` : ''}
+
+              ${attHtml ? `<div style="margin-bottom:12px">${attHtml}</div>` : ''}
+
+              ${actionButtons ? `<div class="order-actions-bar">${actionButtons}</div>` : ''}
             </div>
-          ` : ''}
-
-          ${attHtml ? `<div style="margin-bottom:12px">${attHtml}</div>` : ''}
-
-          ${actionButtons ? `<div class="order-actions-bar">${actionButtons}</div>` : ''}
+          </div>
         </div>
       `;
     }).join('');
@@ -4050,10 +4308,25 @@ button, input, select, textarea {
       rec[el.dataset.reg] = el.value.trim();
     });
 
+    // Validate Password & Confirmation
+    const pwd = rec['Password'];
+    const pwdConfirm = $('reg-password-confirm') ? $('reg-password-confirm').value.trim() : '';
+
+    if (!pwd || pwd.length < 6) {
+      errBox.textContent = 'Please enter a secure password of at least 6 characters.';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (pwd !== pwdConfirm) {
+      errBox.textContent = 'The portal passwords do not match. Please re-enter identical passwords.';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     // Validate required fields
     const missing = FORM_SCHEMA.flatMap(g => g[1]).filter(f => f[2] && !rec[f[0]]).map(f => f[0]);
     if (missing.length) {
-      errBox.textContent = 'Please complete required fields: ' + missing.join(', ');
+      errBox.textContent = 'Please complete all required fields: ' + missing.join(', ');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
@@ -4064,20 +4337,93 @@ button, input, select, textarea {
       return;
     }
 
-    // Generate unique vendor number
-    const newNo = 'VND-' + Math.floor(100000 + Math.random() * 900000);
+    // DUPLICATE NUMBER PREVENTION: Ensure no contact phone, bank number, or PAN repeats
+    const existingVendors = await DB.getVendors();
+    const contactDigits = String(rec['Contact number'] || '').replace(/\D/g, '');
+    if (contactDigits.length < 10) {
+      errBox.textContent = 'Please enter a valid 10-digit primary contact phone number.';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    const duplicatePhone = existingVendors.find(v => {
+      const d = String(v['Contact number'] || '').replace(/\D/g, '');
+      return d.length >= 10 && d.slice(-10) === contactDigits.slice(-10);
+    });
+    if (duplicatePhone) {
+      errBox.textContent = `Primary contact number is already registered under ${duplicatePhone['Vendor name']} (${duplicatePhone['Vendor number']}). Every vendor must have a unique contact number.`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (rec['Bank account no.']) {
+      const bankDigits = String(rec['Bank account no.']).replace(/\D/g, '');
+      if (bankDigits.length >= 6) {
+        const duplicateBank = existingVendors.find(v => {
+          const bd = String(v['Bank account no.'] || '').replace(/\D/g, '');
+          return bd && bd === bankDigits;
+        });
+        if (duplicateBank) {
+          errBox.textContent = `Bank account number is already registered under ${duplicateBank['Vendor name']}. Duplicate banking accounts are not permitted.`;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+      }
+    }
+
+    if (rec['Business PAN']) {
+      const panClean = rec['Business PAN'].toUpperCase().trim();
+      const duplicatePan = existingVendors.find(v => String(v['Business PAN'] || '').toUpperCase().trim() === panClean);
+      if (duplicatePan) {
+        errBox.textContent = `Business PAN ${panClean} is already registered under ${duplicatePan['Vendor name']}.`;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+    }
+
+    // STRICTLY UNIQUE VENDOR NUMBER GENERATION (guaranteed no repetition)
+    const newNo = generateUniqueVendorNumber(existingVendors);
     rec['Vendor number'] = newNo;
     rec['Report date'] = todayStr();
     rec['Report type'] = 'Self registration';
+    rec['Password'] = pwd;
 
     STATE.registeredRecord = rec;
 
+    // Save full vendor dossier to database
     await DB.saveVendor(rec);
     await DB.logAction('Vendor ' + newNo, 'Registered', '', rec['Vendor name']);
 
-    // Show confirmation view
+    // Show Scandinavian confirmation view with credentials summary
     $('msg-title').textContent = 'Welcome, ' + (rec['Contact person'] || 'Partner');
-    $('msg-body').innerHTML = `Onboarding dossier successfully received for <strong>${esc(rec['Vendor name'])}</strong>.<br><br>Your permanent Vendor Code is <span class="vendor-meta-tag" style="font-size:16px">${newNo}</span>.<br>Save this code to access your manufacturing portal.`;
+    $('msg-body').innerHTML = `
+      <div style="font-size:15px;color:var(--text-main);line-height:1.6;margin-bottom:20px">
+        Onboarding dossier successfully received and verified for <strong>${esc(rec['Vendor name'])}</strong>.
+      </div>
+      <div style="background:var(--bg-card-subtle);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:20px;text-align:left;margin-bottom:24px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--brand-primary);text-transform:uppercase;margin-bottom:12px">
+          🔐 Your Vendor Portal Access Credentials
+        </div>
+        <div style="display:grid;grid-template-columns:140px 1fr;gap:10px;font-size:14px;align-items:center">
+          <span style="color:var(--text-muted)">Vendor Code:</span>
+          <span class="vendor-meta-tag" style="font-size:15px;font-weight:700;letter-spacing:1px">${newNo}</span>
+          <span style="color:var(--text-muted)">Saved Password:</span>
+          <code style="font-family:var(--font-mono);font-size:15px;color:var(--brand-primary);font-weight:700;background:var(--bg-card);padding:2px 8px;border-radius:4px;border:1px solid var(--border-light)">${esc(rec['Password'])}</code>
+          <span style="color:var(--text-muted)">Contact Phone:</span>
+          <span>${esc(rec['Contact number'])}</span>
+          <span style="color:var(--text-muted)">Enterprise Name:</span>
+          <strong>${esc(rec['Vendor name'])}</strong>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:14px;padding-top:10px;border-top:1px dashed var(--border-light)">
+          ℹ️ Your password is saved in your Vanya Vendor Profile. You can update it anytime in profile settings.
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <button class="btn btn-primary btn-lg" onclick="window.actions.fillDemo('${newNo}', '${esc(rec['Password'])}');" style="width:100%">
+          🚀 Log In Directly with New Credentials
+        </button>
+      </div>
+    `;
     $('msg-dl-btn').style.display = 'inline-flex';
     $('msg-dl-btn').onclick = () => exportVendorDossierExcel(rec);
 
@@ -4176,10 +4522,9 @@ button, input, select, textarea {
       btn.classList.toggle('active', btn.dataset.adminTab === tabName);
     });
 
-    $('admin-tab-orders-wrap').style.display = tabName === 'orders' ? 'block' : 'none';
-    $('admin-tab-boms-wrap').style.display = tabName === 'boms' ? 'block' : 'none';
-    $('admin-tab-vendors-wrap').style.display = tabName === 'vendors' ? 'block' : 'none';
-    $('admin-tab-audit-wrap').style.display = tabName === 'audit' ? 'block' : 'none';
+    if ($('admin-tab-orders-wrap')) $('admin-tab-orders-wrap').style.display = tabName === 'orders' ? 'block' : 'none';
+    if ($('admin-tab-boms-wrap')) $('admin-tab-boms-wrap').style.display = tabName === 'boms' ? 'block' : 'none';
+    if ($('admin-tab-vendors-wrap')) $('admin-tab-vendors-wrap').style.display = tabName === 'vendors' ? 'block' : 'none';
 
     if ($('admin-date-filters')) {
       $('admin-date-filters').style.display = (tabName === 'orders') ? 'flex' : 'none';
@@ -4192,7 +4537,6 @@ button, input, select, textarea {
     if (STATE.adminActiveTab === 'orders') renderAdminOrders();
     else if (STATE.adminActiveTab === 'boms') renderAdminBOMs();
     else if (STATE.adminActiveTab === 'vendors') renderAdminVendors();
-    else if (STATE.adminActiveTab === 'audit') renderAdminAuditLog();
   }
 
   // ========================================================
@@ -4200,6 +4544,21 @@ button, input, select, textarea {
   // ========================================================
   function filterBOMCategory(cat) {
     STATE.adminBOMFilterCategory = cat;
+    renderAdminBOMs();
+  }
+
+  function toggleBOMCollapse(bomId) {
+    if (!STATE.bomCollapsedState) STATE.bomCollapsedState = {};
+    STATE.bomCollapsedState[bomId] = !STATE.bomCollapsedState[bomId];
+    renderAdminBOMs();
+  }
+
+  function toggleAllBOMs() {
+    STATE.allBOMsCollapsed = !STATE.allBOMsCollapsed;
+    if (!STATE.bomCollapsedState) STATE.bomCollapsedState = {};
+    (STATE.adminBOMs || []).forEach(b => {
+      STATE.bomCollapsedState[b.id] = STATE.allBOMsCollapsed;
+    });
     renderAdminBOMs();
   }
 
@@ -4251,18 +4610,24 @@ button, input, select, textarea {
 
     // Render HTML
     container.innerHTML = `
-      <!-- BOM MANAGER HERO & KPI BAR -->
+      <!-- BOM MANAGER HERO & TOOLBAR -->
       <div class="card" style="padding:18px 20px;margin-bottom:20px;background:var(--bg-card);border:1px solid var(--border-light)">
         <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:14px">
           <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px">
             <div style="display:flex;align-items:center;gap:10px">
               <span style="font-size:22px">🧩</span>
-              <h3 style="font-family:var(--font-serif);font-size:20px;font-weight:700;color:var(--brand-primary);margin:0">
-                Bill of Materials (BOM)
-              </h3>
-              <span style="font-size:11px;font-weight:600;color:var(--text-muted);background:var(--bg-card-subtle);padding:2px 8px;border-radius:var(--radius-full);border:1px solid var(--border-light)">Procurement & Multi-Vendor Explosion</span>
+              <div>
+                <h3 style="font-family:var(--font-serif);font-size:20px;font-weight:700;color:var(--brand-primary);margin:0;line-height:1.2">
+                  Bill of Materials (BOM)
+                </h3>
+                <span style="font-size:12px;color:var(--text-muted)">Component specifications, artisan vendor assignments & batch explosions</span>
+              </div>
             </div>
-            <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+              <button class="btn btn-secondary btn-sm" onclick="window.actions.toggleAllBOMs()" title="Toggle minimize or expand on all BOMs">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+                <span>${STATE.allBOMsCollapsed ? '▾ Expand All BOMs' : '▴ Minimize All BOMs'}</span>
+              </button>
               <button class="btn btn-primary btn-sm" onclick="window.actions.openCreateBOMProductModal()">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 <span>+ Add Product BOM</span>
@@ -4328,14 +4693,13 @@ button, input, select, textarea {
     });
 
     const hasUnassigned = parts.some(p => !p.vendorCode);
-    const thumbImg = bom.image || 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=300&q=80';
+    const isCollapsed = Boolean(STATE.bomCollapsedState && STATE.bomCollapsedState[bom.id]);
 
     return `
-      <div class="bom-product-card" id="bom-card-${esc(bom.id)}">
+      <div class="bom-product-card ${isCollapsed ? 'is-collapsed' : ''}" id="bom-card-${esc(bom.id)}">
         <!-- PRODUCT HEADER -->
         <div class="bom-product-header">
           <div class="bom-product-main">
-            <img src="${esc(thumbImg)}" alt="${esc(bom.name)}" class="bom-thumb" onerror="this.src='https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=300&q=80'">
             <div class="bom-product-details">
               <h3>${esc(bom.name)}</h3>
               <div class="bom-meta-badges">
@@ -4359,6 +4723,9 @@ button, input, select, textarea {
             </div>
 
             <div class="bom-header-actions">
+              <button class="btn btn-secondary btn-sm" onclick="window.actions.toggleBOMCollapse('${esc(bom.id)}')" title="${isCollapsed ? 'Expand BOM components table' : 'Minimize BOM components'}">
+                <span>${isCollapsed ? '▾ Show Parts (' + parts.length + ')' : '▴ Minimize BOM'}</span>
+              </button>
               <button class="btn btn-explode btn-sm" onclick="window.actions.openPushBOMModal('${esc(bom.id)}')" title="Push production order and explode into vendor purchase orders">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
                 <span>🚀 Push for Order</span>
@@ -4376,16 +4743,32 @@ button, input, select, textarea {
           </div>
         </div>
 
-        <!-- PARTS TABLE WRAPPER -->
-        <div class="bom-parts-wrap">
+        <!-- COLLAPSED COMPACT SUMMARY (VISIBLE ONLY WHEN MINIMIZED) -->
+        ${isCollapsed ? `
+          <div class="bom-collapsed-summary" onclick="window.actions.toggleBOMCollapse('${esc(bom.id)}')">
+            <div class="bom-mini-tags">
+              <span class="bom-mini-pill">📦 <strong>${parts.length}</strong> Components</span>
+              <span class="bom-mini-pill">🏭 <strong>${vendorCodesInBOM.size}</strong> Artisan Workshops</span>
+              <span class="bom-mini-pill">⏳ <strong>${esc(bom.leadDays || 25)}d</strong> Lead</span>
+              <span class="bom-mini-pill" style="font-weight:700;color:var(--brand-primary)">Unit BOM: ${formatINR(unitBOMCost)}</span>
+            </div>
+            <div class="bom-mini-expand-hint">
+              <span>Click to expand component breakdown</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- PARTS TABLE WRAPPER (HIDDEN WHEN MINIMIZED) -->
+        <div class="bom-parts-wrap" style="${isCollapsed ? 'display:none;' : ''}">
           <table class="bom-table">
             <thead>
               <tr>
-                <th style="width:26%">Component Part & Craft</th>
-                <th style="width:11%;text-align:right">Qty / Unit</th>
-                <th style="width:13%;text-align:right">Unit Cost</th>
+                <th style="width:30%">Component Part & Craft</th>
+                <th style="width:10%;text-align:right">Qty / Unit</th>
+                <th style="width:12%;text-align:right">Unit Cost</th>
                 <th style="width:13%;text-align:right">Cost / Unit</th>
-                <th style="width:22%">Assigned Artisan Vendor</th>
+                <th style="width:20%">Assigned Artisan Vendor</th>
                 <th style="width:15%">Actions</th>
               </tr>
             </thead>
@@ -4452,11 +4835,15 @@ button, input, select, textarea {
     return `
       <tr>
         <td>
-          <div style="font-weight:600;color:var(--brand-primary);margin-bottom:2px">${esc(part.name)}</div>
-          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
-            <span class="bom-craft-pill">${getCraftIcon(part.craftCategory)} ${esc(part.craftCategory || 'Craft')}</span>
-            ${part.spec ? `<span style="font-size:11px;color:var(--text-muted);max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(part.spec)}">${esc(part.spec)}</span>` : ''}
-            ${part.drawingLink ? `<a href="${esc(part.drawingLink)}" target="_blank" style="color:var(--brand-accent);font-size:11px;font-weight:600" title="Open CAD/Drawing">[CAD Drawing]</a>` : ''}
+          <div class="bom-part-cell">
+            <div>
+              <div style="font-weight:600;color:var(--brand-primary);margin-bottom:2px">${esc(part.name)}</div>
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+                <span class="bom-craft-pill">${getCraftIcon(part.craftCategory)} ${esc(part.craftCategory || 'Craft')}</span>
+                ${part.spec ? `<span style="font-size:11px;color:var(--text-muted);max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${esc(part.spec)}">${esc(part.spec)}</span>` : ''}
+                ${part.drawingLink ? `<a href="${esc(part.drawingLink)}" target="_blank" style="color:var(--brand-accent);font-size:11px;font-weight:600" title="Open CAD/Drawing">[CAD Drawing]</a>` : ''}
+              </div>
+            </div>
           </div>
         </td>
         <td style="text-align:right;font-family:var(--font-mono)">
@@ -4544,7 +4931,7 @@ button, input, select, textarea {
         sku,
         category,
         leadDays,
-        image: image || 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=700&q=80',
+        image: '',
         desc,
         parts: []
       };
@@ -4679,9 +5066,7 @@ button, input, select, textarea {
     });
 
     // Populate banner
-    const thumbImg = bom.image || 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=300&q=80';
     $('pb-product-banner').innerHTML = `
-      <img src="${esc(thumbImg)}" alt="${esc(bom.name)}" style="width:64px;height:64px;border-radius:var(--radius-sm);object-fit:cover;border:1px solid var(--border-light)">
       <div style="flex:1">
         <h4 style="font-family:var(--font-serif);font-size:20px;color:var(--brand-primary);margin-bottom:2px">${esc(bom.name)}</h4>
         <div style="display:flex;gap:8px;font-size:12px;color:var(--text-muted);align-items:center">
@@ -4818,7 +5203,7 @@ button, input, select, textarea {
 
     for (const part of parts) {
       if (!part.vendorCode) continue; // Skip unassigned parts
-      const orderNo = String(Math.floor(1000000 + Math.random() * 9000000));
+      const orderNo = generate10DigitPONumber([...STATE.adminOrders, ...createdOrders]);
       const totalPartQty = Math.round(Number(part.qtyPerUnit) * batchQty * 100) / 100;
       const partTotalValue = Math.round(Number(part.unitCost) * totalPartQty);
 
@@ -4921,64 +5306,9 @@ button, input, select, textarea {
   // ========================================================
   // IMAGE & VISUAL HELPERS (UNCLUTTERED ADMIN CENTER)
   // ========================================================
-  function getOrderImage(order) {
-    if (order && order.image) return order.image;
-    const str = `${(order && order.item) || ''} ${(order && order.spec) || ''}`.toLowerCase();
-    if (str.includes('oslo') || str.includes('chair') || str.includes('lounge') || str.includes('armchair') || str.includes('seat')) {
-      return 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=400&q=80';
-    }
-    if (str.includes('aro') || str.includes('table') || str.includes('dining') || str.includes('desk') || str.includes('coffee')) {
-      return 'https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?auto=format&fit=crop&w=400&q=80';
-    }
-    if (str.includes('lamp') || str.includes('light') || str.includes('kiln') || str.includes('sconce')) {
-      return 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=80';
-    }
-    if (str.includes('credenza') || str.includes('storage') || str.includes('cabinet') || str.includes('shelf') || str.includes('sideboard')) {
-      return 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=400&q=80';
-    }
-    if (str.includes('bed') || str.includes('headboard') || str.includes('bedroom')) {
-      return 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=80';
-    }
-    if (str.includes('teak') || str.includes('timber') || str.includes('wood') || str.includes('oak') || str.includes('joinery')) {
-      return 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=400&q=80';
-    }
-    if (str.includes('brass') || str.includes('metal') || str.includes('handle') || str.includes('bracket') || str.includes('hardware')) {
-      return 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=400&q=80';
-    }
-    if (str.includes('fabric') || str.includes('boucle') || str.includes('bouclé') || str.includes('textile') || str.includes('cushion') || str.includes('upholstery')) {
-      return 'https://images.unsplash.com/photo-1584589167171-541ce45f1eea?auto=format&fit=crop&w=400&q=80';
-    }
-    if (str.includes('packaging') || str.includes('crate') || str.includes('box') || str.includes('carton') || str.includes('corrugated')) {
-      return 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=400&q=80';
-    }
-    return 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80';
-  }
-
-  function getVendorImage(vendor) {
-    if (!vendor) return 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80';
-    const code = String(vendor['Vendor number'] || vendor.code || '');
-    const craft = String(vendor['Business type'] || vendor.craftCategory || vendor['Vendor name'] || '').toLowerCase();
-
-    if (code === 'VND-70291' || craft.includes('wood') || craft.includes('timber') || craft.includes('joinery') || craft.includes('carpentry')) {
-      return 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=700&q=80';
-    }
-    if (code === 'VND-81923' || craft.includes('metal') || craft.includes('brass') || craft.includes('hardware') || craft.includes('steel') || craft.includes('smith')) {
-      return 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80';
-    }
-    if (code === 'VND-62180' || craft.includes('textile') || craft.includes('fabric') || craft.includes('boucle') || craft.includes('bouclé') || craft.includes('upholstery') || craft.includes('weaving')) {
-      return 'https://images.unsplash.com/photo-1584589167171-541ce45f1eea?auto=format&fit=crop&w=700&q=80';
-    }
-    if (code === 'VND-99120' || craft.includes('packaging') || craft.includes('crate') || craft.includes('box') || craft.includes('logistics')) {
-      return 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80';
-    }
-    if (craft.includes('ceramic') || craft.includes('pottery') || craft.includes('clay')) {
-      return 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=700&q=80';
-    }
-    if (craft.includes('stone') || craft.includes('marble') || craft.includes('granite')) {
-      return 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80';
-    }
-    return 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80';
-  }
+  function getOrderImage() { return ''; }
+  function getVendorImage() { return ''; }
+  function getPartImage() { return ''; }
 
   function getCraftIcon(craft) {
     const c = String(craft || '').toLowerCase();
@@ -5004,12 +5334,9 @@ button, input, select, textarea {
       titleEl.innerHTML = `PO #${esc(o.orderNo)} Specification &middot; ${esc(o.item)}`;
     }
     if (contentEl) {
-      let html = `<div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border-light)">
-        <img src="${getOrderImage(o)}" style="width:64px;height:64px;object-fit:cover;border-radius:var(--radius-sm);border:1px solid var(--border-light)" onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80'">
-        <div>
-          <div style="font-weight:700;font-size:16px;color:var(--brand-primary);font-family:var(--font-serif)">${esc(o.item)}</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:2px">Vendor: <strong>${esc(v['Vendor name'] || o.vendor)}</strong> (${esc(o.vendor)}) &middot; Qty: <strong>${esc(o.qty)}</strong> &middot; Val: <strong>${formatINR(o.value)}</strong></div>
-        </div>
+      let html = `<div style="margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border-light)">
+        <div style="font-weight:700;font-size:17px;color:var(--brand-primary);font-family:var(--font-serif)">${esc(o.item)}</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:3px">Vendor: <strong>${esc(v['Vendor name'] || o.vendor)}</strong> (${esc(o.vendor)}) &middot; Qty: <strong>${esc(o.qty)}</strong> &middot; Val: <strong>${formatINR(o.value)}</strong></div>
       </div>`;
 
       if (o.spec) {
@@ -5076,7 +5403,6 @@ button, input, select, textarea {
     return `
       <div class="admin-order-card" id="admin-order-${n}">
         <div class="order-card-left">
-          <img src="${esc(imgUrl)}" alt="${esc(o.item)}" class="order-thumb" onerror="this.src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80'">
           <div class="order-card-info">
             <div class="order-card-meta">
               <strong style="font-family:var(--font-mono);font-size:13px;color:var(--brand-primary)">PO #${n}</strong>
@@ -5130,19 +5456,15 @@ button, input, select, textarea {
           const orders = STATE.adminOrders.filter(o => o.vendor === code);
           const ongoing = orders.filter(o => o.status !== 'completed').length;
           const done = orders.filter(o => o.status === 'completed').length;
-          const img = getVendorImage(v);
           const craft = v['Business type'] || 'Artisan Workshop';
           const contact = v['Contact person'] || '';
           const phone = v['Contact number'] || '';
 
           return `
             <div class="vendor-studio-card" id="vendor-card-${code}">
-              <div class="vendor-studio-cover">
-                <img src="${esc(img)}" alt="${esc(v['Vendor name'])}" class="vendor-studio-img" onerror="this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80'">
-                <div class="vendor-studio-overlay">
-                  <span class="vendor-studio-badge">${code}</span>
-                  <span class="vendor-studio-craft" title="${esc(craft)}">${getCraftIcon(craft)} ${esc(craft)}</span>
-                </div>
+              <div class="vendor-studio-header">
+                <span class="vendor-studio-badge">${code}</span>
+                <span class="vendor-studio-craft" title="${esc(craft)}">${getCraftIcon(craft)} ${esc(craft)}</span>
               </div>
               <div class="vendor-studio-body">
                 <div>
@@ -5162,6 +5484,10 @@ button, input, select, textarea {
                 <div class="vendor-studio-actions">
                   <button class="btn btn-secondary btn-sm" onclick="window.actions.viewVendorDossier('${code}')" title="View Workshop Dossier">
                     <span>Dossier</span>
+                  </button>
+                  <button class="btn btn-secondary btn-sm" onclick="window.actions.openResetPasswordModal('${code}')" title="Reset Login Password" style="color:var(--brand-primary);border-color:var(--border-dark)">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:2px"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <span>Reset Pwd</span>
                   </button>
                   <button class="btn btn-primary btn-sm" onclick="window.actions.quickAddOrderForVendor('${code}')" title="Issue Purchase Order">
                     <span>+ Issue PO</span>
@@ -5239,7 +5565,7 @@ button, input, select, textarea {
       files.push({ name: 'Google Drive Drawing', link: driveLink, type: 'drive' });
     }
 
-    const orderNo = String(Math.floor(1000000 + Math.random() * 9000000));
+    const orderNo = generate10DigitPONumber(STATE.adminOrders);
     const newOrder = {
       orderNo,
       vendor,
@@ -5288,7 +5614,7 @@ button, input, select, textarea {
 
     $('dossier-modal-title').textContent = `${v['Vendor name'] || 'Vendor'} (${vendorCode})`;
     const keys = [
-      'Vendor number', 'Vendor name', 'Business type', 'Contact person', 'Contact number',
+      'Vendor number', 'Vendor name', 'Password', 'Business type', 'Contact person', 'Contact number',
       'Email', 'Head office address', 'Head office contact', 'Main factory address',
       'Main factory contact', 'Business registration details', 'Certifications',
       'Business PAN', 'Bank account no.', 'IFSC code', 'Factory type', 'Machines',
@@ -5301,13 +5627,87 @@ button, input, select, textarea {
           ${keys.map(k => `
             <tr>
               <th>${esc(k)}</th>
-              <td>${esc(v[k] || '-')}</td>
+              <td>${k === 'Password' ? `<code style="font-family:var(--font-mono);font-size:13px;background:var(--bg-card-subtle);padding:2px 8px;border-radius:4px;color:var(--brand-primary);font-weight:700">${esc(v[k] || 'vanya123')}</code>` : esc(v[k] || '-')}</td>
             </tr>
           `).join('')}
         </tbody>
       </table>
     `;
+
+    if ($('dossier-reset-pwd-btn')) {
+      $('dossier-reset-pwd-btn').onclick = () => {
+        closeModal('modal-dossier');
+        openResetPasswordModal(vendorCode);
+      };
+    }
+
     openModal('modal-dossier');
+  }
+
+  // ========================================================
+  // ADMIN VENDOR PASSWORD RESET CONTROLLER
+  // ========================================================
+  let currentResetVendorCode = '';
+
+  function openResetPasswordModal(vendorCode) {
+    currentResetVendorCode = String(vendorCode || '');
+    const vendor = (STATE.adminVendors || []).find(v => String(v['Vendor number']) === currentResetVendorCode);
+    if (!vendor) return;
+
+    $('reset-pwd-err').textContent = '';
+    $('reset-pwd-vendor-name').textContent = vendor['Vendor name'] || 'Artisan Workshop Partner';
+    $('reset-pwd-vendor-code').textContent = currentResetVendorCode;
+    $('reset-pwd-new').value = '';
+    openModal('modal-reset-password');
+  }
+
+  function generateRandomPassword() {
+    const chars = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789';
+    let pwd = 'VNY#';
+    for (let i = 0; i < 5; i++) {
+      pwd += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    if ($('reset-pwd-new')) {
+      $('reset-pwd-new').value = pwd;
+    }
+    return pwd;
+  }
+
+  async function submitResetPassword() {
+    const errBox = $('reset-pwd-err');
+    errBox.textContent = '';
+    const newPwd = $('reset-pwd-new').value.trim();
+
+    if (!newPwd || newPwd.length < 4) {
+      errBox.textContent = 'Password must be at least 4 characters.';
+      $('reset-pwd-new').focus();
+      return;
+    }
+
+    if (!currentResetVendorCode) {
+      errBox.textContent = 'No vendor selected.';
+      return;
+    }
+
+    try {
+      await DB.updateVendor(currentResetVendorCode, { 'Password': newPwd });
+      await DB.logAction('Admin', 'Reset Password', '', `Updated portal password for vendor ${currentResetVendorCode}`);
+
+      // Update in-memory vendor state
+      const v = (STATE.adminVendors || []).find(x => String(x['Vendor number']) === currentResetVendorCode);
+      if (v) v['Password'] = newPwd;
+
+      closeModal('modal-reset-password');
+      toast(`Password for ${currentResetVendorCode} updated to: ${newPwd}`, 'success');
+    } catch (e) {
+      errBox.textContent = 'Failed to reset password. Please check database connection.';
+    }
+  }
+
+  function togglePasswordVisibility(inputId) {
+    const el = $(inputId);
+    if (!el) return;
+    el.type = el.type === 'password' ? 'text' : 'password';
   }
 
   function exportAllOrdersExcel() {
@@ -5451,14 +5851,16 @@ button, input, select, textarea {
     show: showView,
     login: handleLogin,
     logout: handleLogout,
-    fillDemo: (code) => {
+    fillDemo: (code, pwd = 'vanya123') => {
       $('code').value = code;
+      if ($('login-password')) $('login-password').value = pwd;
       handleLogin();
     },
     syncAddress,
     submitRegistration,
     openProfileView,
     saveProfile,
+    togglePasswordVisibility,
     promptOrderAction,
     vendorResumeOrder,
     setVendorTab: (tab) => {
@@ -5493,11 +5895,16 @@ button, input, select, textarea {
     adminResetOrder,
     adminUpdatePayment,
     viewVendorDossier,
+    openResetPasswordModal,
+    generateRandomPassword,
+    submitResetPassword,
     exportAllOrdersExcel,
 
     // BOM Manager Actions
     renderAdminBOMs,
     filterBOMCategory,
+    toggleBOMCollapse,
+    toggleAllBOMs,
     openCreateBOMProductModal,
     submitSaveBOMProduct,
     deleteBOMProduct,

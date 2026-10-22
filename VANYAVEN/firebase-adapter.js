@@ -172,6 +172,84 @@
   }
 
   /**
+   * Delete a BOM from Cloud Firestore
+   */
+  async function deleteBOM(bomId) {
+    if (!init() || !db) return false;
+    try {
+      await db.collection('boms').doc(String(bomId)).delete();
+      return true;
+    } catch (err) {
+      console.error('[VanyaFirebase] deleteBOM error:', err);
+      return false;
+    }
+  }
+
+  /**
+   * Delete an Order from Cloud Firestore
+   */
+  async function deleteOrder(orderNo) {
+    if (!init() || !db) return false;
+    try {
+      await db.collection('orders').doc(String(orderNo)).delete();
+      return true;
+    } catch (err) {
+      console.error('[VanyaFirebase] deleteOrder error:', err);
+      return false;
+    }
+  }
+
+  /**
+   * Upsert an Order Response (Hold/Reject/Note) in Firestore
+   */
+  async function syncResponse(orderNo, resp) {
+    if (!init() || !db) return false;
+    try {
+      await db.collection('responses').doc(String(orderNo)).set({
+        ...resp,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
+      return true;
+    } catch (err) {
+      console.error('[VanyaFirebase] syncResponse error:', err);
+      return false;
+    }
+  }
+
+  /**
+   * Delete an Order Response in Firestore
+   */
+  async function deleteResponse(orderNo) {
+    if (!init() || !db) return false;
+    try {
+      await db.collection('responses').doc(String(orderNo)).delete();
+      return true;
+    } catch (err) {
+      console.error('[VanyaFirebase] deleteResponse error:', err);
+      return false;
+    }
+  }
+
+  /**
+   * Listen to real-time response updates
+   */
+  function subscribeResponses(onUpdate) {
+    if (!init() || !db) return () => {};
+    try {
+      return db.collection('responses').onSnapshot(snapshot => {
+        const map = {};
+        snapshot.forEach(doc => { map[doc.id] = doc.data(); });
+        if (typeof onUpdate === 'function') onUpdate(map);
+      }, err => {
+        console.error('[VanyaFirebase] subscribeResponses error:', err);
+      });
+    } catch (err) {
+      console.error('[VanyaFirebase] subscribeResponses failed:', err);
+      return () => {};
+    }
+  }
+
+  /**
    * Record Audit Events in Firestore
    */
   async function logAuditEvent(actor, action, orderRef, details) {
@@ -249,11 +327,16 @@
     isConfigured,
     init,
     syncOrder,
+    deleteOrder,
     subscribeOrders,
     syncVendor,
     subscribeVendors,
     syncBOM,
+    deleteBOM,
     subscribeBOMs,
+    syncResponse,
+    deleteResponse,
+    subscribeResponses,
     logAuditEvent,
     seedAllDataToFirebase
   };

@@ -17,3 +17,6 @@ desktop.ini
 *.njsproj
 *.sln
 *.sw?
+
+# Standalone extracted repositories
+vanyaven-repo/
