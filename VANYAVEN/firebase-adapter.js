@@ -23,6 +23,8 @@
     );
   }
 
+  let initPromise = null;
+
   function init() {
     if (isInitialized) return true;
     if (typeof firebase === 'undefined') {
@@ -30,7 +32,7 @@
       return false;
     }
     if (!isConfigured()) {
-      console.info('[VanyaFirebase] Running in Local Storage mode. To sync to Firebase, update window.VANYA_FIREBASE_CONFIG in firebase-config.js.');
+      console.info('[VanyaFirebase] Running in Local Storage mode.');
       return false;
     }
 
@@ -40,7 +42,7 @@
       }
       db = firebase.firestore();
       isInitialized = true;
-      console.log('[VanyaFirebase] Connected to Cloud Firestore successfully.');
+      console.log('[VanyaFirebase] ✅ Connected to Cloud Firestore successfully.');
       return true;
     } catch (err) {
       console.error('[VanyaFirebase] Initialization error:', err);
@@ -48,9 +50,40 @@
     }
   }
 
-  // Auto-init on load
+  /**
+   * Returns a Promise that resolves when Firebase is ready.
+   * Retries up to 3 seconds in case the SDK loads slightly after this script.
+   */
+  function waitForInit() {
+    if (initPromise) return initPromise;
+    initPromise = new Promise(resolve => {
+      if (isInitialized) { resolve(true); return; }
+      const attempt = () => {
+        if (init()) { resolve(true); return; }
+        // Not ready yet — retry every 200ms for up to 3 seconds
+        let tries = 0;
+        const iv = setInterval(() => {
+          tries++;
+          if (init()) { clearInterval(iv); resolve(true); }
+          else if (tries >= 15) { clearInterval(iv); resolve(false); }
+        }, 200);
+      };
+      if (document.readyState === 'loading') {
+        window.addEventListener('DOMContentLoaded', attempt, { once: true });
+      } else {
+        attempt();
+      }
+    });
+    return initPromise;
+  }
+
+  // Kick off init immediately
   if (typeof window !== 'undefined') {
-    window.addEventListener('DOMContentLoaded', () => init());
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', () => init(), { once: true });
+    } else {
+      init();
+    }
   }
 
   // ========================================================
@@ -81,6 +114,20 @@
    * Listen to real-time order updates from Firestore
    */
   function subscribeOrders(onUpdate) {
+    if (!isInitialized && isConfigured()) {
+      // Wait for Firebase, then subscribe
+      let unsub = () => {};
+      waitForInit().then(ready => {
+        if (ready && db) {
+          unsub = db.collection('orders').onSnapshot(snapshot => {
+            const orders = [];
+            snapshot.forEach(doc => orders.push(doc.data()));
+            if (typeof onUpdate === 'function') onUpdate(orders);
+          }, err => { console.error('[VanyaFirebase] subscribeOrders error:', err); });
+        }
+      });
+      return () => unsub();
+    }
     if (!init() || !db) return () => {};
     try {
       return db.collection('orders').onSnapshot(snapshot => {
@@ -334,6 +381,7 @@
   window.VanyaFirebase = {
     isConfigured,
     init,
+    waitForInit,
     getDb,
     get _db() { return db; },   // Direct Firestore instance access
     syncOrder,

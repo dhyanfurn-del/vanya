@@ -3549,7 +3549,7 @@ button, input, select, textarea {
   // ========================================================
   // VENDOR PORTAL LOGIC
   // ========================================================
-  function openVendorPortal(vendorCode, vendorData) {
+  async function openVendorPortal(vendorCode, vendorData) {
     $('vend-title-name').textContent = vendorData['Vendor name'] || 'Artisan Workshop';
     $('vend-title-code').textContent = vendorCode;
 
@@ -3561,7 +3561,18 @@ button, input, select, textarea {
     // Populate filter dropdowns
     populateMonthOptions($('vend-filter-month'));
 
-    // Subscribe to Orders
+    // Show loading state immediately
+    const ordersContainer = $('vendor-orders-list') || $('v-vend');
+    STATE.vendorOrders = [];
+    STATE.vendorResponses = {};
+    showView('v-vend');
+
+    // Wait for Firebase to be ready before subscribing (cross-device fix)
+    if (window.VanyaFirebase && window.VanyaFirebase.isConfigured()) {
+      await window.VanyaFirebase.waitForInit();
+    }
+
+    // Subscribe to Orders — now guaranteed Firebase is ready
     const unsubOrders = DB.subscribeOrders(vendorCode, orders => {
       STATE.vendorOrders = orders;
       populateFYOptions($('vend-filter-fy'), orders);
@@ -3575,8 +3586,6 @@ button, input, select, textarea {
       renderVendorDashboard();
     });
     STATE.unsubscribers.push(unsubResp);
-
-    showView('v-vend');
   }
 
   function populateFYOptions(selectEl, ordersList) {
