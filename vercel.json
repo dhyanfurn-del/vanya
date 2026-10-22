@@ -12,6 +12,18 @@
       "destination": "/VANYAVEN/index.html"
     },
     {
+      "source": "/firebase-config.js",
+      "destination": "/VANYAVEN/firebase-config.js"
+    },
+    {
+      "source": "/firebase-adapter.js",
+      "destination": "/VANYAVEN/firebase-adapter.js"
+    },
+    {
+      "source": "/VANYAVEN/assets/(.*)",
+      "destination": "/VANYAVEN/assets/$1"
+    },
+    {
       "source": "/assets/(.*)",
       "destination": "/VANYAPROD/assets/$1"
     },
